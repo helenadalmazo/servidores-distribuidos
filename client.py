@@ -1,6 +1,7 @@
 #Cliente TCP
 import socket
 
+client_socket = ''
 server = []
 
 def search_servers():
@@ -14,8 +15,9 @@ def search_servers():
 
 		try:
 			print "Trying connection... Server name: " + name + ", Address: " + address + ", Port: " + port
-			dest = (address, int(port))
 			global client_socket
+			client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+			dest = (address, int(port))
 			client_socket.connect(dest)
 			print "CONNECTION ESTABLISHED\n"
 			global server
@@ -28,7 +30,7 @@ def search_servers():
 		#	print e
 	arq.close()
 
-client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
 
 search_servers()
 
