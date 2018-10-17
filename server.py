@@ -14,6 +14,8 @@ def conexao(conn,cli):
 	print '\nFinalizando conexao do cliente ' + cli
 	conn.close()
 
+CONNECTIONS = []
+
 HOST = ''
 PORT = 5001
 
