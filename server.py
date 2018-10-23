@@ -9,7 +9,7 @@ def conexao(conn,cli):
 		if not msg_recv:
 			break
 		print '\nMensagem: ' + msg_recv
-		msg_send = '-> ' + msg_recv.upper()
+		msg_send = msg_recv
 		conn.send(msg_send)
 	print '\nFinalizando conexao do cliente ' + cli
 	conn.close()
