@@ -14,10 +14,13 @@ def conexao(conn,cli):
 	print '\nFinalizando conexao do cliente ' + cli
 	conn.close()
 
-CONNECTIONS = []
-
 HOST = ''
 PORT = 5001
+
+print 'Digite o numero da porta que o server deve ouvir: '
+msg_port = int(raw_input())
+
+PORT = msg_port
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -26,6 +29,7 @@ orig = (HOST, PORT)
 server_socket.bind(orig)
 server_socket.listen(10)
 
+print '\nServer disponivel'
 while True:
 	conn, cliente = server_socket.accept()
 	print '\nConectado por ' + str(cliente[0]) + ', ' + str(cliente[1])
