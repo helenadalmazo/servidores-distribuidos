@@ -14,26 +14,31 @@ def search_servers():
 		port = server_info[2].replace(" ", "").replace("\n", "")
 
 		try:
-			print "Trying connection... Server name: " + name + ", Address: " + address + ", Port: " + port
+			# print "Trying connection... Server name: " + name + ", Address: " + address + ", Port: " + port
 			global client_socket
 			client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-			client_socket.settimeout(1)
+			client_socket.settimeout(0.5)
 			dest = (address, int(port))
 			client_socket.connect(dest)
-			print "CONNECTION ESTABLISHED\n"
+			# print "CONNECTION ESTABLISHED\n"
+			
 			global server
 			server = (name, address, port)
-			break;
+			arq.close
+			return True
 		except Exception as e:
-			print "CONNECTION FAILED: " + str(e) + "\n"
-		#	print type(e)
-		#	print e.args
-		#	print e
+			e
+			# print "CONNECTION FAILED: " + str(e) + "\n"
+			# print type(e)
+			# print e.args
+			# print e
 	arq.close()
+	return False
 
-print "\n Para sair use CTRL+X"
+print "\n Para sair use CTRL+X\n"
+print "Buscando servidores disponiveis, por favor aguarde...\n"
 
-search_servers()
+ok = search_servers()
 
 retry_send = False
 msg_send = ''
@@ -41,7 +46,10 @@ msg_send = ''
 #\030	24		CAN  	\x18	^X		(Cancel)
 while msg_send != '\x18':
 
-	if retry_send is False:
+	if ok is False:
+		print "Todos os servidores estao indisponiveis. Tente novamente mais tarde.\n"
+
+	if retry_send is False:		
 		msg_send = raw_input()
 
 	try:
@@ -49,10 +57,11 @@ while msg_send != '\x18':
 		msg_recv = client_socket.recv(1024)
 		retry_send = False
 	except Exception as e:
-		print "Unexpected error: " + str(e)
-		print "Searching new server..."
-		search_servers()
-		retry_send = True
+		# print "Unexpected error: " + str(e)
+		# print "Searching new server..."
+		ok = search_servers()
+		if ok:
+			retry_send = True
 		continue
 
 	print str(server) + ": " + msg_recv + "\n"
