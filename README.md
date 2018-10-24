@@ -26,3 +26,8 @@ Comando para executar o servidor:
 Comando para executar o cliente:
 
     python cliente.py
+
+## Autores
+
+* [Helena Dalmazo](https://github.com/nefasta)
+* [Matheus Queiroz](https://github.com/Matheusqz)
