@@ -10,14 +10,16 @@ Disciplina: Sistemas Distribuídos
 
 Este serviço será responsável por ecoar (espelhar) mensagem enviada por cliente. Contudo será um serviço tolerante a falha, ou seja, caso um servidor não possa atender (responder a mensagem enviada pelo cliente), o cliente deverá enviar a requisição (mensagem) à outro servidor de eco idêntico, que deverá responder ao cliente.
 
+### Requisitos
+
+* Python versão 2.7.15
+
 ### Configuração
 
 Antes de executar o cliente é necessário configurar os servidores disponíveis. Para isso há o arquivo **servers.txt** que armazenará todos os servidores conhecidos. Cada linha do arquivo corresponde às informação de um servidor. 
 A linha é estruturada da seguinte ordem: *Nome, Endereço, Porta*
 
 ### Execução
-
-O projeto já possui um executável do Python versão 2.7.15, portanto não é preciso baixá-lo, nem configurá-lo em sua máquina.
 
 Comando para executar o servidor:
 
