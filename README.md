@@ -24,6 +24,7 @@ A linha é estruturada da seguinte ordem: *Nome, Endereço, Porta*
 Comando para executar o servidor:
 
     python server.py
+* Após a execução será solicitado a porta do socket do servidor.
 
 Comando para executar o cliente:
 
