@@ -32,5 +32,5 @@ Comando para executar o cliente:
 
 ## Autores
 
-* [Helena Dalmazo](https://github.com/nefasta)
+* [Helena Dalmazo](https://github.com/helenadalmazo)
 * [Matheus Queiroz](https://github.com/Matheusqz)
